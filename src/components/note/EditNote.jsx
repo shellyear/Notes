@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateNote } from '../../store/actions/note';
 
@@ -6,8 +6,7 @@ import { updateNote } from '../../store/actions/note';
 function EditNote({ match: { params: { id } }, history }) {
     const dispatch = useDispatch(); 
     const note = useSelector(state => state.notes.find(note => note.id == id));
-    const [content, setContent] = useState(note.content);
-
+    const [content, setContent] = useState(note ? note.content : '');
     
     const handleSubmit = (e) => {
         e.preventDefault();
