@@ -1,4 +1,4 @@
-##Status: adding styled components
+## Status: adding styled components
 
 ### `npm start`
 
