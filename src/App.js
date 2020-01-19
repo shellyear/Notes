@@ -1,11 +1,38 @@
 import React from 'react';
+import styled, { ThemeProvider } from 'styled-components';
+import { connect } from 'react-redux';
+
+import { fromSettings } from 'selectors';
 import Routes from './Routes';
 
 
-function App() {
+const AppWrapper = styled.div`
+  font-family: sans-serif;
+  height: 100vh;
+  overflow: auto;
+  user-zoom: fixed;
+  font-size: ${props => `calc(1em + ${props.totalZoom}px)`} 
+`;
+
+function App(props) {
   return (
-    <Routes />
+    <ThemeProvider theme={{}}>
+      <AppWrapper>
+        <Routes />
+      </AppWrapper>
+    </ThemeProvider>
   );
 };
 
-export default App;
+const mapStateToProps = (state) => ({
+  theme: fromSettings.getTheme(state)
+}); 
+
+const mapDispatchToProps = () => ({
+  // loadSettingsFromCookies
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);

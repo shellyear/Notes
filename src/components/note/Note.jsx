@@ -4,19 +4,22 @@ import { useDispatch } from 'react-redux';
 import { deleteNote } from '../../store/actions/note';
 
 
-export default function Note({ note: { id, title, content } }) {
+const Note = ({ note: { id, content } }) => {
     const dispatch = useDispatch();
     
     return (
-        <li>
-            <h4>{title}</h4>
+        <li className='note'>
             <p>{content}</p>
-            <button type='submit'>
-                <Link to={`/post/${id}/edit`}>Edit</Link>
-            </button>
-            <button type='submit' onClick={() => dispatch(deleteNote(id))}>
-                Delete
-            </button>
+            <div className="btn-group">
+                <div className='btn'>
+                    <Link to={`/note/${id}/edit`}>Edit</Link>
+                </div>
+                <div className='btn' onClick={() => dispatch(deleteNote(id))}>
+                    Delete
+                </div>
+            </div>
         </li>
     );
 };
+
+export default Note;

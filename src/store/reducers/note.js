@@ -2,9 +2,9 @@ import * as actionTypes from '../../constants/actionTypes';
 
 export const initialState = {
     notes: [
-        { id: 1, content: 'SASAI'},
-        { id: 2, content: 'ZHASAsdfjsdlkfjds'},
-        { id: 3, content: 'ZHASAsdfjsdlkfjds'}
+        { id: "1", content: 'SASAI'},
+        { id: "2", content: 'ZHASAsdfjsdlkfjds'},
+        { id: "3", content: 'ZHASAsdfjsdlkfjds'}
     ]
 };
 
@@ -23,7 +23,7 @@ const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 notes: state.notes.map(note => {
-                    return note.id == id ? {...note, content }: note 
+                    return note.id === id ? {...note, content }: note 
                 })
             };
         

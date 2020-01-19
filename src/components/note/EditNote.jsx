@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { updateNote } from '../../store/actions/note';
 
 
-function EditNote({ match: { params: { id } }, history }) {
+const EditNote = ({ match: { params: { id } }, history }) => {
     const dispatch = useDispatch(); 
-    const note = useSelector(state => state.notes.find(note => note.id == id));
+    const note = useSelector(state => state.notes.find(note => note.id === id));
     const [content, setContent] = useState(note ? note.content : '');
     
     const handleSubmit = (e) => {
